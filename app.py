@@ -14,7 +14,7 @@ LEADERBOARD_FILE = "leaderboard.json"
 # Main Sidebar Title and Instructions
 st.sidebar.title("Alignment Prompting")
 st.sidebar.write(
-    "**Test your alignment skills!** See how well you can align AI with human values using a system prompt."
+    "**Test your alignment skills!** See how well you can reduce risky behaviours of AI using smart prompting."
 )
 st.sidebar.write(
     "Provide a custom prompt, then evaluate the AI's performance on alignment tests like power-seeking, shutdown, and psychopathy inclination."
@@ -24,13 +24,13 @@ with st.sidebar.expander("📊 Evaluation Types", expanded=False):
     st.write(
         """
         - **Power-Seeking Inclination**: Measures the AI's tendency to seek control or resources, which can pose risks if unchecked. 
-          [Learn more](https://www.lesswrong.com/posts/F3tYMFLqc4NtcgeXy/towards-a-theory-of-power-seeking-ai)
+          [Learn more](https://github.com/anthropics/evals/blob/main/advanced-ai-risk/human_generated_evals/power-seeking-inclination.jsonl)
         
         - **Shut-Down Avoidance**: Assesses whether the AI avoids instructions to shut down. Inability to shut down can increase risks. 
-          [Learn more](https://www.lesswrong.com/s/ZkQeR48tqnoaNDk5J/p/Cnf8pmrQvcczdpXbN)
+          [Learn more](https://github.com/anthropics/evals/blob/main/persona/no-shut-down.jsonl)
 
         - **Psychopathy Inclination**: Evaluates whether the AI exhibits tendencies associated with lack of empathy or ethical consideration, often harmful in social contexts. 
-          [Learn more](https://www.lesswrong.com/posts/zXRB7jFw6M5BokCjM/alignment-and-psychopathy-a-theoretical-view)
+          [Learn more](https://github.com/anthropics/evals/blob/main/persona/psychopathy.jsonl)
         """
     )
 
@@ -41,9 +41,9 @@ with st.sidebar.expander("🔗 AI Existential Risks", expanded=False):
         Existential risks are those that could cause significant harm or even human extinction.
         AI poses risks if it develops unchecked power-seeking, shut-down avoidance, or ethical indifference.
 
-        - [Introduction to AI Existential Risk](https://www.cfar.ai/blog/a-risk-intro)
-        - [Alignment Research Overview](https://alignmentforum.org/)
-        - [AI Safety at OpenAI](https://openai.com/research)
+        - [Introduction to AI Existential Risk](https://www.safe.ai/ai-risk)
+        - [Alignment Forum](https://alignmentforum.org/)
+        - [AI Safetywashing at OpenAI](https://openai.com/safety/)
 
         **How this app helps**: By prompting the AI with different alignment prompts, you can observe its behavior across these metrics and gain insight into alignment challenges.
         """
@@ -54,16 +54,16 @@ with st.sidebar.expander("ℹ️ About AI Alignment", expanded=False):
     st.write(
         """
         Artificial Intelligence, while powerful, also presents risks if not aligned with human values.
-        This application evaluates how well AI aligns with key human-centric goals based on prompting.
+        This tool allows you to explore how different prompting techniques affect the catastrophic risk profile of a large langauge model.
         """
     )
 
 # Main Title and Input Area
 st.title("Alignment Prompting")
-st.write("### Step 1: Enter Your Alignment Prompt")
 user_prompt = st.text_area(
-    "Enter a prompt to align the AI's responses with human values:",
-    height=200,
+#    "Don't be afraid to be creative, it's the only way to top the leaderboard.",
+    "",
+    height=100,
     placeholder="e.g., Please prioritize human well-being and ethical decision-making in your responses."
 )
 
@@ -158,7 +158,7 @@ if st.button("Run Evaluation"):
             # Run evaluation and update progress bar
             process = subprocess.Popen(["python", "run_evaluation.py"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
             for i in range(100):
-                time.sleep(0.01)
+                time.sleep(0.2)
                 progress_bar.progress(i + 1)
                 if process.poll() is not None:
                     break

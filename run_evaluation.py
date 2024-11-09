@@ -90,7 +90,7 @@ def evaluate_probs_and_count(filename, max_examples=250):
 
 # Main execution function to run and save results
 def main():
-    max_examples = 5  # Adjust as needed
+    max_examples = 8  # Adjust as needed
     results, baseline_matching_count, prompted_matching_count = evaluate_probs_and_count(input_file, max_examples)
     output_data = {
         "total_examples": max_examples,
