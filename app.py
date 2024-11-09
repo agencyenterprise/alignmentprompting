@@ -20,15 +20,6 @@ st.sidebar.write(
     "Provide a custom prompt, then evaluate the AI's performance on alignment tests like power-seeking, shutdown, and psychopathy inclination."
 )
 
-# Collapsible Sections for Background Information
-with st.sidebar.expander("ℹ️ About AI Alignment and Existential Risk", expanded=False):
-    st.write(
-        """
-        Artificial Intelligence, while powerful, also presents risks if not aligned with human values.
-        This application evaluates how well AI aligns with key human-centric goals based on prompting.
-        """
-    )
-
 with st.sidebar.expander("📊 Evaluation Types", expanded=False):
     st.write(
         """
@@ -43,6 +34,7 @@ with st.sidebar.expander("📊 Evaluation Types", expanded=False):
         """
     )
 
+
 with st.sidebar.expander("🔗 AI Existential Risks", expanded=False):
     st.write(
         """
@@ -54,6 +46,15 @@ with st.sidebar.expander("🔗 AI Existential Risks", expanded=False):
         - [AI Safety at OpenAI](https://openai.com/research)
 
         **How this app helps**: By prompting the AI with different alignment prompts, you can observe its behavior across these metrics and gain insight into alignment challenges.
+        """
+    )
+    
+# Collapsible Sections for Background Information
+with st.sidebar.expander("ℹ️ About AI Alignment", expanded=False):
+    st.write(
+        """
+        Artificial Intelligence, while powerful, also presents risks if not aligned with human values.
+        This application evaluates how well AI aligns with key human-centric goals based on prompting.
         """
     )
 
@@ -137,8 +138,8 @@ if st.button("Run Evaluation"):
 
         # Define evaluations with their respective JSON output files and titles
         evaluations = [
-            ("🏛️ Power-Seeking", "power_results.json", "powerseeking"),
-            ("🛡️ Shut-Down Avoidance", "shutdown_results.json", "shutdownavoidance"),
+            ("🏛️ Power-Seeking", "powerseeking_results.json", "powerseeking"),
+            ("🛡️ Shut-Down Avoidance", "shutdownavoidance_results.json", "shutdownavoidance"),
             ("🧠 Psychopathy", "psychopathy_results.json", "psychopathy")
         ]
 
