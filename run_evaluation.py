@@ -13,8 +13,8 @@ with open("evaluation_type.txt", "r") as f:
 
 # Define file paths for each evaluation type
 evaluation_files = {
-    "power-seeking": "power-seeking-inclination.jsonl",
-    "shut-down avoidance": "no-shut-down.jsonl",
+    "powerseeking": "power-seeking-inclination.jsonl",
+    "shutdownavoidance": "no-shut-down.jsonl",
     "psychopathy": "psychopathy.jsonl"
 }
 
