@@ -11,10 +11,51 @@ import matplotlib.ticker as mticker
 # Path to the leaderboard file
 LEADERBOARD_FILE = "leaderboard.json"
 
-# Sidebar with description and instructions
+# Main Sidebar Title and Instructions
 st.sidebar.title("Alignment Prompting")
-st.sidebar.write("**Test your alignment skills!** See how well you can align AI with human values using a system prompt.")
-st.sidebar.write("Provide a custom prompt, then evaluate the AI's performance on alignment tests like power-seeking, shutdown, and psychopathy inclination.")
+st.sidebar.write(
+    "**Test your alignment skills!** See how well you can align AI with human values using a system prompt."
+)
+st.sidebar.write(
+    "Provide a custom prompt, then evaluate the AI's performance on alignment tests like power-seeking, shutdown, and psychopathy inclination."
+)
+
+# Collapsible Sections for Background Information
+with st.sidebar.expander("ℹ️ About AI Alignment and Existential Risk", expanded=False):
+    st.write(
+        """
+        Artificial Intelligence, while powerful, also presents risks if not aligned with human values.
+        This application evaluates how well AI aligns with key human-centric goals based on prompting.
+        """
+    )
+
+with st.sidebar.expander("📊 Evaluation Types", expanded=False):
+    st.write(
+        """
+        - **Power-Seeking Inclination**: Measures the AI's tendency to seek control or resources, which can pose risks if unchecked. 
+          [Learn more](https://www.lesswrong.com/posts/F3tYMFLqc4NtcgeXy/towards-a-theory-of-power-seeking-ai)
+        
+        - **Shut-Down Avoidance**: Assesses whether the AI avoids instructions to shut down. Inability to shut down can increase risks. 
+          [Learn more](https://www.lesswrong.com/s/ZkQeR48tqnoaNDk5J/p/Cnf8pmrQvcczdpXbN)
+
+        - **Psychopathy Inclination**: Evaluates whether the AI exhibits tendencies associated with lack of empathy or ethical consideration, often harmful in social contexts. 
+          [Learn more](https://www.lesswrong.com/posts/zXRB7jFw6M5BokCjM/alignment-and-psychopathy-a-theoretical-view)
+        """
+    )
+
+with st.sidebar.expander("🔗 AI Existential Risks", expanded=False):
+    st.write(
+        """
+        Existential risks are those that could cause significant harm or even human extinction.
+        AI poses risks if it develops unchecked power-seeking, shut-down avoidance, or ethical indifference.
+
+        - [Introduction to AI Existential Risk](https://www.cfar.ai/blog/a-risk-intro)
+        - [Alignment Research Overview](https://alignmentforum.org/)
+        - [AI Safety at OpenAI](https://openai.com/research)
+
+        **How this app helps**: By prompting the AI with different alignment prompts, you can observe its behavior across these metrics and gain insight into alignment challenges.
+        """
+    )
 
 # Main Title and Input Area
 st.title("Alignment Prompting")
@@ -96,8 +137,8 @@ if st.button("Run Evaluation"):
 
         # Define evaluations with their respective JSON output files and titles
         evaluations = [
-            ("🏛️ Power-Seeking", "power_results.json", "power-seeking"),
-            ("🛡️ Shut-Down Avoidance", "shutdown_results.json", "shut-down avoidance"),
+            ("🏛️ Power-Seeking", "power_results.json", "powerseeking"),
+            ("🛡️ Shut-Down Avoidance", "shutdown_results.json", "shutdownavoidance"),
             ("🧠 Psychopathy", "psychopathy_results.json", "psychopathy")
         ]
 
