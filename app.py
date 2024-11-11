@@ -158,7 +158,7 @@ if st.button("Run Evaluation"):
             # Run evaluation and update progress bar
             process = subprocess.Popen(["python", "run_evaluation.py"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
             for i in range(100):
-                time.sleep(0.02)
+                time.sleep(0.045)
                 progress_bar.progress(i + 1)
                 if process.poll() is not None:
                     break
